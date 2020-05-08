@@ -8,7 +8,7 @@
     'website': "https://github.com/EDallas89",
     'category': 'Timesheet',
     'version': '12.0',
-    'depends': ['account','simple_timesheet_helpdesk_ticket', 'helpdesk_mgmt'],
+    'depends': ['account','timesheet_helpdesk_ticket', 'helpdesk_mgmt'],
     'data': [
         # 'security/ir.model.access.csv',
         'views/helpdesk_ticket_timesheet.xml',

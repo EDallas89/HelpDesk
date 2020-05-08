@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <record id="analytics_accounts_helpdesk_ticket" model="ir.ui.view">
+    <field name="name">analytics.accounts.helpdesk.ticket.view.form</field>
+    <field name="model">helpdesk.ticket</field>
+    <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_form" />
+    <field name="priority" eval="35" />
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='partner_email']" position="after">
+        <field name="analytic_account_id" />
+      </xpath>
+    </field>
+  </record>
+</data>

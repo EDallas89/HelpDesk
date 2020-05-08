@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Projects for Helpdesk's Tickets",
+    'name': "Analytics Accounts for Helpdesk's Tickets",
     'summary': """
-        Añade Proyectos a los Tickets del Helpdesk""",
+        Añade las Cuentas Analíticas a los Tickets del Helpdesk""",
     'author': "Inma Sánchez",
     'website': "https://github.com/EDallas89",
-    'category': 'Project',
+    'category': 'Account',
     'version': '12.0',
-    'depends': ['helpdesk_mgmt','project'],
+    'depends': ['helpdesk_mgmt','account'],
     'data': [
         #'security/ir.model.access.csv',
-        'views/project_helpdesk_ticket.xml',
+        'views/analytic_account_helpdesk_ticket.xml',
     ],
     'installable': True,
     'application': True,

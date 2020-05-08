@@ -14,3 +14,7 @@ class ProjectHelpdeskTicket(models.Model):
         comodel_name='project.task',
         string='Task',
     )
+
+    @api.onchange('project_id')
+    def _onchange_project(self):
+        self.task_id = False
