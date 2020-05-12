@@ -17,7 +17,6 @@ class TicketTimesheet(models.Model):
         comodel_name='project.project',
         string='Project',
     )
-
     task_id = fields.Many2one(
         comodel_name='project.task',
         string='Task',
@@ -28,7 +27,7 @@ class TicketTimesheet(models.Model):
         string='Timesheet',
     )
 
-    total_hours_ticket = fields.Float(
+    total_hours = fields.Float(
         compute='impute_hours',
     )
 
@@ -37,11 +36,21 @@ class TicketTimesheet(models.Model):
         for record in self:
             record.total_hours_ticket = sum(record.timesheet_ids.mapped('unit_amount'))
 
-    @api.onchange('project_id')
-    def _onchange_project(self):
+    @api.constrains('project_id')
+    def _constrains_project(self):
         self.task_id = False
+        for record in self:
+            record.timesheet_ids.update({'project_id': record.project_id.id})
+            record.timesheet_ids.update({'task_id': False})
+
+    @api.constrains('task_id')
+    def _constrains_project(self):
+        for record in self:
+            record.timesheet_ids.update({'task_id': record.task_id.id})
+
     
     @api.constrains('analytic_account_id')
-    def _constrains_account(self):
+    def _constrains_account_timesheets(self):
         for record in self:
             record.timesheet_ids.update({'account_id': record.analytic_account_id.id})
+ 
