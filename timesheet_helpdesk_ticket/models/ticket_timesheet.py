@@ -17,6 +17,12 @@ class TicketTimesheet(models.Model):
         comodel_name='project.task',
         string='Task',
     )
+
+    allow_timesheet = fields.Boolean(
+        string="Allow Timesheet",
+        related='team_id.allow_timesheet',
+    )
+
     timesheet_ids = fields.One2many(
         comodel_name='account.analytic.line',
         inverse_name='ticket_id',

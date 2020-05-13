@@ -25,8 +25,9 @@
                         <field name="partner_name" string="Contact" />
                         <field name="partner_email" />
                         <field name="partner_phone" />
-                        <field name="project_id"/>
-                        <field name="task_id" domain="[('project_id', '=', project_id)]" attrs="{'invisible':[('project_id', '=', False)]}" />
+                        <field name="project_id" attrs="{'invisible':[('allow_timesheet', '=', False)]}" />
+                        <field name="task_id" domain="[('project_id', '=', project_id)]" attrs="{'invisible':['|',('project_id', '=', False), ('allow_timesheet', '=', False)]}" />
+                        <field name="allow_timesheet" invisible="1"/>
                     </group>
                     <group>
                         <field name="team_id" options="{&quot;always_reload&quot;: True}" />
@@ -40,7 +41,7 @@
                 </group>
             </xpath>
             <xpath expr="//page[@name='attachment']" position="replace">
-                <page string="Timesheets" attrs="{'invisible':[('task_id', '=', False)]}">
+                <page string="Timesheets" attrs="{'invisible':['|',('task_id', '=', False), ('allow_timesheet', '=', False)]}">
                     <field name="timesheet_ids" context="{'default_project_id': project_id,'default_task_id': task_id}">
                         <tree editable="bottom" delete="true">
                             <field name="project_id" invisible="1" />
