@@ -9,10 +9,6 @@ class TicketTimesheet(models.Model):
         store=True,
         readonly=False,
     )
-    analytic_account_id = fields.Many2one(
-        comodel_name='account.analytic.account',
-        string='Analityc Account'
-    )
     project_id = fields.Many2one(
         comodel_name='project.project',
         string='Project',
@@ -47,10 +43,3 @@ class TicketTimesheet(models.Model):
     def _constrains_project(self):
         for record in self:
             record.timesheet_ids.update({'task_id': record.task_id.id})
-
-    
-    @api.constrains('analytic_account_id')
-    def _constrains_account_timesheets(self):
-        for record in self:
-            record.timesheet_ids.update({'account_id': record.analytic_account_id.id})
- 
