@@ -30,7 +30,7 @@ class TicketTimesheet(models.Model):
     @api.depends('timesheet_ids.unit_amount')
     def impute_hours(self):
         for record in self:
-            record.total_hours_ticket = sum(record.timesheet_ids.mapped('unit_amount'))
+            record.total_hours = sum(record.timesheet_ids.mapped('unit_amount'))
 
     @api.constrains('project_id')
     def _constrains_project(self):
