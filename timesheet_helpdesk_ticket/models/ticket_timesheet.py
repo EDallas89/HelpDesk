@@ -18,19 +18,22 @@ class TicketTimesheet(models.Model):
         string='Task',
     )
 
-    allow_timesheet = fields.Boolean(
-        string="Allow Timesheet",
-        related='team_id.allow_timesheet',
-    )
-
     timesheet_ids = fields.One2many(
         comodel_name='account.analytic.line',
         inverse_name='ticket_id',
         string='Timesheet',
     )
-
     total_hours = fields.Float(
         compute='impute_hours',
+    )
+
+    ##### Helpdesk Ticket Team #####
+    allow_timesheet = fields.Boolean(
+        string="Allow Timesheet",
+        related='team_id.allow_timesheet',
+    )
+    team_id = fields.Many2one(
+        comodel_name='helpdesk.ticket.team',
     )
 
     @api.depends('timesheet_ids.unit_amount')
@@ -49,3 +52,8 @@ class TicketTimesheet(models.Model):
     def _constrains_project(self):
         for record in self:
             record.timesheet_ids.update({'task_id': record.task_id.id})
+
+    @api.onchange('team_id')
+    def _onchange_team_id(self):
+        for record in self:
+            record.project_id = record.team_id.set_default_project

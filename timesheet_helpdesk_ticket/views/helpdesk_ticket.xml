@@ -25,7 +25,8 @@
                         <field name="partner_name" string="Contact" />
                         <field name="partner_email" />
                         <field name="partner_phone" />
-                        <field name="project_id" attrs="{'invisible':[('allow_timesheet', '=', False)]}" />
+                        <field name="project_id" context="{'default_project_id': team_id}" 
+                        attrs="{'invisible':[('allow_timesheet', '=', False)]}" />
                         <field name="task_id" domain="[('project_id', '=', project_id)]" attrs="{'invisible':['|',('project_id', '=', False), ('allow_timesheet', '=', False)]}" />
                         <field name="allow_timesheet" invisible="1"/>
                     </group>
