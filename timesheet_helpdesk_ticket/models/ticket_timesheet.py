@@ -56,4 +56,4 @@ class TicketTimesheet(models.Model):
     @api.onchange('team_id')
     def _onchange_team_id(self):
         for record in self:
-            record.project_id = record.team_id.set_default_project
+            record.project_id = record.team_id.default_project
