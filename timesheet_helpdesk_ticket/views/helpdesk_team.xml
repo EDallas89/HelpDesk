@@ -9,7 +9,7 @@
             <xpath expr="//field[@name='alias_user_id']" position="after">
                 <field name="allow_timesheet" type="checkbox" />
                 <field name="default_project" attrs="{'invisible':[('allow_timesheet', '=', False)]}" options="{'delete': True}" />
-                <button name="action_clear" help=" Clear Default Project" type="object" icon="fa-trash" attrs="{'invisible':['|',('allow_timesheet', '=', False),('default_project', '=', False)]}" class="oe_highlight" widget="statinfo"/>
+                <button name="action_clear" help=" Clean Default Project" type="object" icon="fa-trash" attrs="{'invisible':['|',('allow_timesheet', '=', False),('default_project', '=', False)]}" class="oe_highlight" widget="statinfo"/>
             </xpath>
         </field>
     </record>
