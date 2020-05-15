@@ -55,16 +55,10 @@
                         <!-- Form desplegable de las líneas del Timesheet-->
                         <form>
                             <group>
-                              <group name="ticket" string="Ticket">
-                                <field name="project_id"/>
-                                <field name="task_id" />
                                 <field name="date" />
                                 <field name="user_id"/>
                                 <field name="name" />
-                              </group>
-                              <group name="costs" string="Costs">
-                                <field name="unit_amount" widget="float_time" />
-                              </group>
+                                <field name="unit_amount" string="Duration (Hour(s))" widget="float_time" /> 
                             </group>
                           </form>
                     </field>
