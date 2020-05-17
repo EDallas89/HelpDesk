@@ -3,6 +3,8 @@ from odoo import models, fields, api
 class HelpdeskTicketTeam(models.Model):
     _inherit = 'helpdesk.ticket.team'
 
+    archive = fields.Boolean('Archive', related='active', default=True, store=True, readonly=False)    
+    
     allow_timesheet = fields.Boolean(
         string="Allow Timesheet",
     )

@@ -9,12 +9,20 @@
             <!-- Only For Fix Smart Button-->
             <xpath expr="//div[@name='button_box']" position="replace">
                 <div class="oe_button_box" name="button_box">
+                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                        <field name="archive" widget="boolean_button"
+                            options='{"terminology": "archive"}'/>
+                            <!--{"string_true": "Activo", "hover_false": "Restaurar","string_false": "Archivado", "hover_true": "Archivar"}} -->
+                    </button>
+                </div>
+            </xpath>
+            <!--<xpath expr="//div[@name='button_box']" position="replace">
+                <div class="oe_button_box" name="button_box">
                     <button name="toggle_active" type="object" string="(Un) Archive" class="oe_stat_button" icon="fa-archive" confirm="(Un)archiving a team automatically (un)archives its tickets. Do you want to proceed?">
                         <field name="active" widget="boolean_button" options='{"terminology": { "string_true": "True", "hover_true": "check all", "string_false": "False", "hover_false": "Clear all" }}' invisible="1"/>
                     </button>
-                
                 </div>
-            </xpath>
+            </xpath>-->
             <xpath expr="//field[@name='alias_user_id']" position="after">
                 <field name="allow_timesheet" type="checkbox" />
                 <field name="default_project" attrs="{'invisible':[('allow_timesheet', '=', False)]}" options="{'delete': True}" />
